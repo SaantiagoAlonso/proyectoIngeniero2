@@ -47,11 +47,18 @@ public class SecurityConfig {
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(http -> {
                     http.requestMatchers(HttpMethod.POST, "/auth/login").permitAll();
+                    http.requestMatchers(HttpMethod.GET,"auth/verify-token").permitAll();
                     http.requestMatchers("/login/oauth2/**").permitAll();
+                    http.requestMatchers(HttpMethod.POST,"/user/setPassword").permitAll();
+                    http.requestMatchers(HttpMethod.POST,"/user/registrationUser").permitAll();
+                    http.requestMatchers(HttpMethod.GET,"user/prueba").hasRole("ADMINISTRADOR");
+                    http.requestMatchers(HttpMethod.PUT,"/user/updateUser").hasRole("ADMINISTRADOR");
+                    http.requestMatchers(HttpMethod.DELETE,"/user/delete/**").hasRole("ADMINISTRADOR");
+//                    http.requestMatchers("/hola.html").authenticated();
                     http.anyRequest().authenticated();
                 })
                 .addFilterBefore(new JwtFilter(jwtUtils), BasicAuthenticationFilter.class)
-//                .formLogin(Customizer.withDefaults()) //agregado
+//                .formLogin(pagina -> pagina.loginPage("http://localhost:5500/index.html")) //agregado
 //                .oauth2Login(Customizer.withDefaults()) //agregado
                 .oauth2Login(oauth2 -> oauth2
                         // Redirigir a tu página de login para OAuth2

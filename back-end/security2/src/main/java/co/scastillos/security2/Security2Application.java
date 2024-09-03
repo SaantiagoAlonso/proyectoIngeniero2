@@ -8,7 +8,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
-import static co.scastillos.security2.entity.Rol.ADMINISTRADOR;
+import static co.scastillos.security2.entity.Rol.*;
 
 @SpringBootApplication
 public class Security2Application implements CommandLineRunner {
@@ -31,7 +31,7 @@ public class Security2Application implements CommandLineRunner {
 				.password(passwordEncoder.encode("1234"))
 				.age(25)
 				.roles(ADMINISTRADOR)
-				.email("admin@gmai.com")
+				.email("scastillos3@ucentral.edu.co")
 				.build();
 		userRepository.save(admin);
 	}

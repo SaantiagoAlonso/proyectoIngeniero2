@@ -75,7 +75,11 @@ document.getElementById('login').addEventListener('click', async event => {
         alert(data.jwt);
 
         // Puedes hacer algo con el JWT aquí, como almacenarlo en el almacenamiento local
-        // localStorage.setItem('jwt', data.jwt);
+        localStorage.setItem('jwt', data.jwt);
+
+
+
+        window.location.href = "http://localhost:5500/hola.html";
     } catch (error) {
         console.error('Error:', error);
     }
@@ -88,7 +92,26 @@ document.getElementById('login').addEventListener('click', async event => {
 
 document.getElementById("logGoogle").addEventListener("click", function() {
     window.location.href = "http://localhost:8080";
+    // localStorage.setItem('jwt', data.jwt);
+    // console.log('Autenticado. JWT: ', data.jwt);
+    // alert(data.jwt);
+    // window.location.href = "http://localhost:5500/hola.html";
 });
+
+// document.getElementById("logGoogle").addEventListener("click", async function() {
+//   event.preventDefault();
+//   try {
+//       window.location.href = "http://localhost:8080"
+//       const response = await fetch("http://localhost:8080/oauth2/authorization/google");
+//       const data = await response.json();
+//       if (data.jwt) {
+//           localStorage.setItem('jwt', data.jwt);
+//           window.location.href = "http://localhost:5500/hola.html";
+//       }
+//   } catch (error) {
+//       console.error('Error:', error);
+//   }
+// });
 
 
 // let findBtn = document.getElementById('find').addEventListener('click', event => {
@@ -104,3 +127,5 @@ document.getElementById("logGoogle").addEventListener("click", function() {
 //         });
 
 // });
+
+

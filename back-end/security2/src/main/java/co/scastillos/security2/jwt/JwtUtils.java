@@ -37,7 +37,7 @@ public class JwtUtils {
                 .withSubject(username)
                 .withClaim("authorizations",authorizations)
                 .withIssuedAt(new Date())
-                .withExpiresAt(new Date(System.currentTimeMillis() + 180000))
+                .withExpiresAt(new Date(System.currentTimeMillis() + 7200000)) // dos horas
                 .withJWTId(UUID.randomUUID().toString())
                 .withNotBefore(new Date(System.currentTimeMillis()))
                 .sign(algorithm);

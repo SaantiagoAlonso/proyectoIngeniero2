@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.security.Principal;
+
 @CrossOrigin(origins = "http://localhost:5500")
 @RestController
 @RequestMapping("/auth")
@@ -19,6 +21,18 @@ public class AuthController {
     public ResponseEntity<AuthResponse> login(@RequestBody AuthLoginRequest user) {
         return ResponseEntity.ok(userDatailsService.loginUser(user));
     }
+
+    //AGREGADO
+
+    @GetMapping("/verify-token")
+    public ResponseEntity<Void> checkAuth(Principal principal) {
+        return ResponseEntity.ok().build();
+    }
+
+//    @PostMapping("/loginGoogle")
+//    public ResponseEntity<AuthResponse> login2(){
+//        onAuthenticationSuccess
+//    }
 
 }
 

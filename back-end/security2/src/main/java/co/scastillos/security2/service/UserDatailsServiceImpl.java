@@ -6,6 +6,8 @@ import co.scastillos.security2.jwt.JwtUtils;
 import co.scastillos.security2.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -15,6 +17,8 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+
+import java.sql.SQLOutput;
 
 @Service
 public class UserDatailsServiceImpl implements UserDetailsService {
@@ -26,6 +30,7 @@ public class UserDatailsServiceImpl implements UserDetailsService {
      JwtUtils jwtUtils;
 
     @Autowired
+    @Lazy
     PasswordEncoder passwordEncoder;
 
 
@@ -33,6 +38,7 @@ public class UserDatailsServiceImpl implements UserDetailsService {
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         return userRepository.findByUsername(username);
     }
+
 
     public AuthResponse loginUser(AuthLoginRequest authLoginRequest){
         String username = authLoginRequest.username();
@@ -55,6 +61,31 @@ public class UserDatailsServiceImpl implements UserDetailsService {
         }
         if(!passwordEncoder.matches(password,userDetails.getPassword())){
             throw new BadCredentialsException(" contraseña incorrecta");
+        }
+
+        return new UsernamePasswordAuthenticationToken(username,userDetails.getPassword(),userDetails.getAuthorities());
+    }
+
+    //agregado
+    public AuthResponse loginUserGoogle(AuthLoginRequest authLoginRequest){
+        String username = authLoginRequest.username();
+
+
+        Authentication authentication = this.authenticateGoogle(username);
+        SecurityContextHolder.getContext().setAuthentication(authentication);
+
+        String accesToken = jwtUtils.createToken(authentication);
+        System.out.println(username);
+        System.out.println(accesToken);
+
+        AuthResponse authReponse = new AuthResponse(username,"user logeado correctamente",accesToken,true);
+        return authReponse;
+    }
+
+    public Authentication authenticateGoogle(String username){
+        UserDetails userDetails = this.loadUserByUsername(username);
+        if(userDetails == null){
+            throw new BadCredentialsException("usuario o contraseña incorrecta");
         }
 
         return new UsernamePasswordAuthenticationToken(username,userDetails.getPassword(),userDetails.getAuthorities());
