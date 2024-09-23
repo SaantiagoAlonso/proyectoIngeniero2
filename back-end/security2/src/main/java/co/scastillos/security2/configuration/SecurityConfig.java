@@ -54,6 +54,8 @@ public class SecurityConfig {
                     http.requestMatchers(HttpMethod.GET,"user/prueba").hasRole("ADMINISTRADOR");
                     http.requestMatchers(HttpMethod.PUT,"/user/updateUser").hasRole("ADMINISTRADOR");
                     http.requestMatchers(HttpMethod.DELETE,"/user/delete/**").hasRole("ADMINISTRADOR");
+                    http.requestMatchers(HttpMethod.POST,"/reserva/verificarReserva").permitAll();
+                    http.requestMatchers(HttpMethod.PUT,"/reserva/extencion").permitAll();
 //                    http.requestMatchers("/hola.html").authenticated();
                     http.anyRequest().authenticated();
                 })

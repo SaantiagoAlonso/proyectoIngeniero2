@@ -60,6 +60,8 @@
 //     }
 // };
 
+
+
 window.onload = function() {
     // Verifica si hay un JWT en el almacenamiento local
     const jwt = localStorage.getItem('jwt');
@@ -88,11 +90,11 @@ document.addEventListener('DOMContentLoaded', function() {
     const url = 'http://localhost:8080/user/listUsers'; 
     const jwt = localStorage.getItem('jwt'); // Obtener el JWT del localStorage
 
-    if (!jwt) {
-        alert('No estás autenticado. Redirigiendo al login.');
-        window.location.href = 'index.html'; // Redirige al login si no hay JWT
-        return;
-    }
+    // if (!jwt) {
+    //     alert('No estás autenticado. Redirigiendo al login.');
+    //     window.location.href = 'index.html'; // Redirige al login si no hay JWT
+    //     return;
+    // }
 
     // Obtener la lista de usuarios del backend con el JWT
     fetch(url, {
@@ -197,5 +199,29 @@ async function deleteUser(userId, jwt) {
     }
 }
 
+function updateUser(userId) {
+    window.location.href = `actualizar.html?id=${userId}`;
+}
+
+
 // Asegúrate de exportar la función si estás usando módulos ES6
 // export { deleteUser };
+
+
+// Función para cerrar sesión
+function logout() {
+    // Elimina el JWT del almacenamiento local
+    localStorage.removeItem('jwt');
+
+    // Opcionalmente, puedes realizar una solicitud al servidor para invalidar el JWT (si es necesario)
+    // Nota: Asegúrate de que tu backend tenga un endpoint para manejar el cierre de sesión si lo deseas
+
+    // Redirige al usuario a la página de inicio de sesión o a una página de confirmación de cierre de sesión
+    window.location.href = '/index.html'; // Cambia esta URL a la página deseada
+}
+
+// Llama a la función logout cuando se carga el documento
+  const logoutButton = document.getElementById('logoutButton');
+    if (logoutButton) {
+        logoutButton.addEventListener('click', logout);
+    };

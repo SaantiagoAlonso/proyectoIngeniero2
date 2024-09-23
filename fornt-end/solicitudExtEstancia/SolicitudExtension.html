@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Hotel Website</title>
+   <!-- font awesome cdn link  -->
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+   <!-- swiper js cdn link -->
+   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
+    <!-- custom css link -->
+   <link rel="stylesheet" href="styleSE.css">
+</head>
+<body>
+
+   <!-- header -->
+
+   <header class="header">
+
+      <a href="#" class="logo"> <i class="fas fa-hotel"></i> hotel </a>
+
+      <nav class="navbar">
+         <a href="#home">Inicio</a>
+         <a href="#about">Acerca de</a>
+         <a href="#room">Habitaciones</a>
+         <a href="#gallery">Galeria</a>
+         <a href="#review">Reseñas</a>
+         <a href="#faq">faq</a>
+         <a href="#reservation" class="btn"> Reservar</a>
+      </nav>
+
+      <div id="menu-btn" class="fas fa-bars"></div>
+
+   </header>
+
+   <!-- end -->
+
+   <!-- home -->
+
+   <section class="home" id="home">
+
+    <section class="reservation" id="reservation" style="margin-top: 50px;">
+
+        
+        <h1 class="heading">Solicitud de Extensión de Estancia</h1>
+
+        <form action="">
+    
+            <div class="container">
+    
+                <div class="box">
+                    <p>Número de Cabaña o Habitación <span>*</span></p>
+                    <input type="text" class="input" placeholder="Número de Cabaña o Habitación" id="habitacion-extension">
+                </div>
+    
+                <div class="box">
+                    <p>Nombre <span>*</span></p>
+                    <input type="text" class="input" placeholder="Tu Nombre" id="nombre-extension">
+                </div>
+    
+                <div class="box">
+                    <p>Fecha de Salida Original <span>*</span></p>
+                    <input type="date" class="input" id="fecha-salida-original" readonly>
+                </div>
+    
+                <div class="box">
+                    <p>Fecha de Salida Solicitada <span>*</span></p>
+                    <input type="date" class="input" id="fecha-salida-solicitada" required>
+                </div>
+    
+                <div class="box">
+                    <p>Motivo de la Extensión</p>
+                    <textarea class="input" placeholder="Razón para solicitar la extensión" id="motivo-extension"></textarea>
+                </div>
+    
+            </div>
+    
+            <input type="submit" value="Enviar Solicitud" class="btn">
+    
+        </form>
+    
+    
+    </section>
+
+    
+
+
+   <!-- end -->
+
+   <!-- footer -->
+
+ 
+   <!-- end -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+
+   <script src="script.js"></script>
+
+</body>
+</html>
