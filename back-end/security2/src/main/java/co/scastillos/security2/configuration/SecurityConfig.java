@@ -57,6 +57,8 @@ public class SecurityConfig {
                     http.requestMatchers(HttpMethod.POST,"/reserva/verificarReserva").permitAll();
                     http.requestMatchers(HttpMethod.PUT,"/reserva/extencion").permitAll();
                     http.requestMatchers("/inventario/**").permitAll();
+                    http.requestMatchers("/pasaDia/**").permitAll();
+                    http.requestMatchers("/pedido/**").permitAll();
 //                    http.requestMatchers("/hola.html").authenticated();
                     http.anyRequest().authenticated();
                 })

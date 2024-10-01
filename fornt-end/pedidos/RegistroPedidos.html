@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Hotel Website</title>
+   <!-- font awesome cdn link  -->
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+   <!-- swiper js cdn link -->
+   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
+    <!-- custom css link -->
+   <link rel="stylesheet" href="stylePedidos.css">
+</head>
+<body>
+
+   <!-- header -->
+
+   <header class="header">
+
+      <a href="#" class="logo"> <i class="fas fa-hotel"></i> hotel </a>
+
+      <nav class="navbar">
+         <a href="#home">Inicio</a>
+         <a href="#about">Acerca de</a>
+         <a href="#room">Habitaciones</a>
+         <a href="#gallery">Galeria</a>
+         <a href="#review">Reseñas</a>
+         <a href="#faq">faq</a>
+         <a href="#reservation" class="btn"> Reservar</a>
+      </nav>
+
+      <div id="menu-btn" class="fas fa-bars"></div>
+
+   </header>
+
+   <!-- end -->
+
+   <!-- home -->
+
+   <section class="home" id="home">
+
+    <section class="reservation" id="reservation" style="margin-top: 50px;">
+
+        
+        <h1 class="heading">Registro de Pedidos</h1>
+
+        <form id="pedido-form">
+    
+            <div class="container">
+    
+                <div class="box">
+                    <p>Nombre del Cliente <span>*</span></p>
+                    <input type="text" class="input" placeholder="Nombre del Cliente" id="nombre-cliente" required>
+                </div>
+    
+                <div class="box">
+                    <p>Número de Mesa <span>*</span></p>
+                    <input type="text" class="input" placeholder="Número de Mesa" id="numero-mesa" required>
+                </div>
+    
+                <div class="box">
+                    <p>Fecha y Hora del Pedido <span>*</span></p>
+                    <input type="datetime-local" class="input" id="fecha-hora" required>
+                </div>
+    
+                <div class="box">
+                    <p>Artículos Pedidos <span>*</span></p>
+                    <div id="items-container">
+                        <div class="item-row">
+                            <select class="input item-select" onchange="updateItem(this)">
+                                <option value="0" data-price="0">Seleccionar Artículo</option>
+                                <option value="1" data-price="5.00">Gaseosa</option>
+                                <option value="2" data-price="7.00">Agua</option>
+                                <option value="3" data-price="10.00">Cerveza</option>
+                                <option value="4" data-price="15.00">Licor</option>
+                            </select>
+                            <input type="number" class="input item-quantity" placeholder="Cantidad" onchange="updateItem(this)" min="1" value="1">
+                            <input type="number" class="input item-price" placeholder="Precio" readonly>
+                            <button type="button" class="btn btn-remove" onclick="removeItem(this)">Eliminar</button>
+                        </div>
+                    </div>
+                    <button type="button" class="btn btn-add" onclick="addItem()">Agregar Artículo</button>
+                </div>
+    
+                <div class="box">
+                    <p>Total del Pedido (Costo) <span>*</span></p>
+                    <input type="number" class="input" id="total-pedido" placeholder="Costo Total del Pedido" readonly>
+                </div>
+    
+            </div>
+
+    
+            <input type="submit" value="Registrar Pedido" class="btn">
+    
+        </form>
+    
+    
+    </section>
+
+    <script>
+        function updateItem(element) {
+            let row = element.closest('.item-row');
+            let select = row.querySelector('.item-select');
+            let quantity = row.querySelector('.item-quantity').value;
+            let price = select.options[select.selectedIndex].getAttribute('data-price') || 0;
+            row.querySelector('.item-price').value = (quantity * price).toFixed(2);
+            calculateTotal();
+        }
+    
+        function addItem() {
+            let container = document.getElementById('items-container');
+            let newRow = document.createElement('div');
+            newRow.classList.add('item-row');
+            newRow.innerHTML = `
+                <select class="input item-select" onchange="updateItem(this)">
+                    <option value="0" data-price="0">Seleccionar Artículo</option>
+                    <option value="1" data-price="5.00">Gaseosa</option>
+                    <option value="2" data-price="7.00">Agua</option>
+                    <option value="3" data-price="10.00">Cerveza</option>
+                    <option value="4" data-price="15.00">Licor</option>
+                </select>
+                <input type="number" class="input item-quantity" placeholder="Cantidad" onchange="updateItem(this)" min="1" value="1">
+                <input type="number" class="input item-price" placeholder="Precio" readonly>
+                <button type="button" class="btn btn-remove" onclick="removeItem(this)">Eliminar</button>
+            `;
+            container.appendChild(newRow);
+        }
+    
+        function removeItem(button) {
+            let row = button.closest('.item-row');
+            row.remove();
+            calculateTotal();
+        }
+    
+        function calculateTotal() {
+            let total = 0;
+            document.querySelectorAll('.item-price').forEach(input => {
+                total += parseFloat(input.value) || 0;
+            });
+            document.getElementById('total-pedido').value = total.toFixed(2);
+        }
+    </script>
+    
+    <style>
+        .item-row {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+        .item-select, .item-quantity, .item-price {
+            margin-right: 1rem;
+            padding: 0.5rem;
+            font-size: 1.6rem;
+        }
+        .btn-remove {
+            background-color: red;
+            color: white;
+            border: none;
+            padding: 0.5rem;
+            cursor: pointer;
+        }
+        .btn-add {
+            background-color: green;
+            color: white;
+            border: none;
+            padding: 0.5rem;
+            cursor: pointer;
+        }
+    </style>
+
+
+   <!-- end -->
+
+   <!-- footer -->
+
+ 
+   <!-- end -->
+
+
+
+
+
+   <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+
+   <script src="pedidos.js"></script>
+
+</body>
+</html>

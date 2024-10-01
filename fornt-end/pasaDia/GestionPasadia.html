@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Hotel Website</title>
+   <!-- font awesome cdn link  -->
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+   <!-- swiper js cdn link -->
+   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
+    <!-- custom css link -->
+   <link rel="stylesheet" href="stylePasaDia.css">
+</head>
+<body>
+
+   <!-- header -->
+
+   <header class="header">
+
+      <a href="#" class="logo"> <i class="fas fa-hotel"></i> hotel </a>
+
+      <nav class="navbar">
+         <a href="#home">Inicio</a>
+         <a href="#about">Acerca de</a>
+         <a href="#room">Habitaciones</a>
+         <a href="#gallery">Galeria</a>
+         <a href="#review">Reseñas</a>
+         <a href="#faq">faq</a>
+         <a href="#reservation" class="btn"> Reservar</a>
+      </nav>
+
+      <div id="menu-btn" class="fas fa-bars"></div>
+
+   </header>
+
+   <!-- end -->
+
+   <!-- home -->
+
+   <section class="home" id="home">
+
+    <section class="reservation" id="reservation" style="margin-top: 50px;">
+
+        
+        <h1 class="heading">Gestión de Pasadía</h1>
+
+        <form action="">
+    
+            <div class="container">
+    
+                <div class="box">
+                    <p>Nombre <span>*</span></p>
+                    <input type="text" class="input" placeholder="Tu Nombre" id="nombre-pasadía" required>
+                </div>
+    
+                <div class="box">
+                    <p>Email <span>*</span></p>
+                    <input type="email" class="input" placeholder="Tu Correo Electrónico" id="email-pasadía" required>
+                </div>
+    
+                <div class="box">
+                    <p>Fecha de Visita <span>*</span></p>
+                    <input type="date" class="input" id="fecha-visita" required>
+                </div>
+    
+                <div class="box">
+                    <p>Tipo de Servicio <span>*</span></p>
+                    <select name="service-type" class="input" id="tipo-servicio" required>
+                        <option value="piscina">Piscina</option>
+                        <option value="piscina-almuerzo">Piscina y Almuerzo</option>
+                    </select>
+                </div>
+    
+                <div class="box">
+                    <p>Comentarios o Solicitudes Especiales</p>
+                    <textarea class="input" placeholder="Comentarios o solicitudes especiales" id="comentarios"></textarea>
+                </div>
+    
+            </div>
+    
+            <input type="submit" value="Solicitar Pasadía" class="btn">
+    
+        </form>
+    
+    
+    </section>
+
+
+
+   <!-- end -->
+
+   <!-- footer -->
+
+ 
+   <!-- end -->
+
+
+   <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+
+   <script src="solicitudPasaDia.js"></script> 
+
+   <script src="script.js"></script>
+
+</body>
+</html>

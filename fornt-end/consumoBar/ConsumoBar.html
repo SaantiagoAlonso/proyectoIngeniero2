@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Hotel Website</title>
+   <!-- font awesome cdn link  -->
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+   <!-- swiper js cdn link -->
+   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
+    <!-- custom css link -->
+   <link rel="stylesheet" href="styleBar.css">
+</head>
+<body>
+
+   <!-- header -->
+
+   <header class="header">
+
+      <a href="#" class="logo"> <i class="fas fa-hotel"></i> hotel </a>
+
+      <nav class="navbar">
+         <a href="#home">Inicio</a>
+         <a href="#about">Acerca de</a>
+         <a href="#room">Habitaciones</a>
+         <a href="#gallery">Galeria</a>
+         <a href="#review">Reseñas</a>
+         <a href="#faq">faq</a>
+         <a href="#reservation" class="btn"> Reservar</a>
+      </nav>
+
+      <div id="menu-btn" class="fas fa-bars"></div>
+
+   </header>
+
+   <!-- end -->
+
+   <!-- home -->
+
+   <section class="home" id="home">
+
+    <section class="reservation" id="reservation" style="margin-top: 50px;">
+
+
+        <h1 class="heading">Registro de Consumo en el Bar</h1>
+
+        <form action="">
+    
+            <div class="container">
+    
+                <div class="box">
+                    <p>Número de Cabaña o Habitación <span>*</span></p>
+                    <input type="text" class="input" placeholder="Número de Cabaña o Habitación" id="habitacion-bar">
+                </div>
+    
+                <div class="box">
+                    <p>Nombre <span>*</span></p>
+                    <input type="text" class="input" placeholder="Tu Nombre" id="nombre-bar">
+                </div>
+    
+                <div class="box">
+                    <p>Gaseosas (Costo) <span>*</span></p>
+                    <input type="number" class="input" placeholder="Costo de Gaseosas" id="gaseosas">
+                </div>
+    
+                <div class="box">
+                    <p>Agua (Costo) <span>*</span></p>
+                    <input type="number" class="input" placeholder="Costo de Agua" id="agua">
+                </div>
+    
+                <div class="box">
+                    <p>Cerveza (Costo) <span>*</span></p>
+                    <input type="number" class="input" placeholder="Costo de Cerveza" id="cerveza">
+                </div>
+    
+                <div class="box">
+                    <p>Licores (Costo) <span>*</span></p>
+                    <input type="number" class="input" placeholder="Costo de Licores" id="licores">
+                </div>
+    
+                <div class="box">
+                    <p>Total de Consumo</p>
+                    <input type="text" class="input" id="total-consumo-bar" placeholder="Total Consumo" readonly>
+                </div>
+    
+            </div>
+    
+            <input type="button" value="Calcular Total" class="btn" onclick="calcularTotalBar()">
+            <input type="submit" value="Agregar a la Cuenta" class="btn">
+    
+        </form>
+    
+    </section>
+    
+    <script>
+        function calcularTotalBar() {
+            var gaseosas = parseFloat(document.getElementById('gaseosas').value) || 0;
+            var agua = parseFloat(document.getElementById('agua').value) || 0;
+            var cerveza = parseFloat(document.getElementById('cerveza').value) || 0;
+            var licores = parseFloat(document.getElementById('licores').value) || 0;
+            var totalConsumoBar = gaseosas + agua + cerveza + licores;
+            document.getElementById('total-consumo-bar').value = totalConsumoBar.toFixed(2);
+        }
+     </script>
+    
+
+
+   <!-- end -->
+
+   <!-- footer -->
+
+ 
+   <!-- end -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+
+   <script src="script.js"></script>
+
+</body>
+</html>

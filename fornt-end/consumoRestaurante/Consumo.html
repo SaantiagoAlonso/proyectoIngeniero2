@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Hotel Website</title>
+   <!-- font awesome cdn link  -->
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+   <!-- swiper js cdn link -->
+   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
+    <!-- custom css link -->
+   <link rel="stylesheet" href="styleRestaurante.css">
+</head>
+<body>
+
+   <!-- header -->
+
+   <header class="header">
+
+      <a href="#" class="logo"> <i class="fas fa-hotel"></i> hotel </a>
+
+      <nav class="navbar">
+         <a href="#home">Inicio</a>
+         <a href="#about">Acerca de</a>
+         <a href="#room">Habitaciones</a>
+         <a href="#gallery">Galeria</a>
+         <a href="#review">Reseñas</a>
+         <a href="#faq">faq</a>
+         <a href="#reservation" class="btn"> Reservar</a>
+      </nav>
+
+      <div id="menu-btn" class="fas fa-bars"></div>
+
+   </header>
+
+   <!-- end -->
+
+   <!-- home -->
+
+   <section class="home" id="home">
+
+    <section class="reservation" id="reservation" style="margin-top: 50px;">
+
+        <h1 class="heading">Registro de Consumo en el Restaurante</h1>
+
+        <form action="">
+    
+            <div class="container">
+    
+                <div class="box">
+                    <p>Número de Habitación <span>*</span></p>
+                    <input type="text" class="input" placeholder="Número de Habitación" id="habitacion">
+                </div>
+    
+                <div class="box">
+                    <p>Nombre <span>*</span></p>
+                    <input type="text" class="input" placeholder="Tu Nombre" id="nombre">
+                </div>
+    
+                <div class="box">
+                    <p>Desayuno (Costo) <span>*</span></p>
+                    <input type="number" class="input" placeholder="Costo del Desayuno" id="desayuno">
+                </div>
+    
+                <div class="box">
+                    <p>Almuerzo (Costo) <span>*</span></p>
+                    <input type="number" class="input" placeholder="Costo del Almuerzo" id="almuerzo">
+                </div>
+    
+                <div class="box">
+                    <p>Extras (Costo) <span>*</span></p>
+                    <input type="number" class="input" placeholder="Costo de los Extras" id="extras">
+                </div>
+    
+                <div class="box">
+                    <p>Total de Consumo</p>
+                    <input type="text" class="input" id="total-consumo" placeholder="Total Consumo" readonly>
+                </div>
+    
+            </div>
+    
+            <input type="button" value="Calcular Total" class="btn" onclick="calcularTotalConsumo()">
+            <input type="submit" value="Agregar a la Cuenta" class="btn">
+    
+        </form>
+    
+    </section>
+    
+    <script>
+        function calcularTotalConsumo() {
+            var desayuno = parseFloat(document.getElementById('desayuno').value) || 0;
+            var almuerzo = parseFloat(document.getElementById('almuerzo').value) || 0;
+            var extras = parseFloat(document.getElementById('extras').value) || 0;
+            var totalConsumo = desayuno + almuerzo + extras;
+            document.getElementById('total-consumo').value = totalConsumo.toFixed(2);
+        }
+     </script>
+    
+
+
+   <!-- end -->
+
+   <!-- footer -->
+
+ 
+   <!-- end -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+
+   <script src="script.js"></script>
+
+</body>
+</html>
