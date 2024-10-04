@@ -79,7 +79,8 @@ document.getElementById('login').addEventListener('click', async event => {
 
 
 
-        window.location.href = "http://localhost:5500/hola.html";
+        // window.location.href = "http://localhost:5500/hola.html";
+        window.location.href = "http://localhost:5500/inicioAdmin/inicioAdmin.html";
     } catch (error) {
         console.error('Error:', error);
     }
